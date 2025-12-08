@@ -1,0 +1,44 @@
+{
+  "name": "serina",
+  "version": "0.1.0",
+  "description": "로컬 LLM 기반 멀티 에이전트 PoC",
+  "main": "dist/cli/index.js",
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli/index.js",
+    "dev": "tsx src/cli/index.ts",
+    "type-check": "tsc --noEmit",
+    "check-system": "tsx scripts/check-system.ts",
+    "ollama:up": "docker-compose up -d",
+    "ollama:down": "docker-compose down",
+    "ollama:logs": "docker-compose logs -f ollama",
+    "ollama:pull": "docker exec -it serina-ollama ollama pull"
+  },
+  "keywords": [
+    "llm",
+    "agent",
+    "ollama",
+    "langchain"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/core": "^0.3.0",
+    "@langchain/community": "^0.3.0",
+    "@langchain/ollama": "^0.1.0",
+    "langchain": "^0.3.0",
+    "commander": "^12.0.0",
+    "axios": "^1.7.0",
+    "dotenv": "^16.4.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/commander": "^2.12.2",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}
+
