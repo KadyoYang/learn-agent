@@ -1,4 +1,4 @@
-import { Agent } from '@mastra/core';
+import { Agent } from '@mastra/core/agent';
 import { Tool } from '@mastra/core/tools';
 import { AgentConfig } from '../types.js';
 import { createOllamaLLM } from '../llm/ollama.js';
