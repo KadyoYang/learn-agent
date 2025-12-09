@@ -1,12 +1,13 @@
 # Serina - 로컬 LLM 기반 조사 에이전트
 
-Ollama를 활용한 로컬 LLM 기반 조사 에이전트입니다. DuckDuckGo를 통해 웹 검색을 수행합니다.
+**Mastra + Ollama**를 활용한 로컬 LLM 기반 조사 에이전트입니다. DuckDuckGo를 통해 웹 검색을 수행합니다.
 
 ## 기능
 
 - 🔍 **웹 검색**: DuckDuckGo를 통한 정보 조사
 - 🤖 **로컬 LLM**: Ollama를 사용한 완전 로컬 실행
 - ⚙️ **간단한 설정**: `.env` 파일로 모델 및 설정 관리
+- 🚀 **Mastra 프레임워크**: TypeScript 친화적 AI 에이전트 프레임워크
 
 ## 사전 요구사항
 

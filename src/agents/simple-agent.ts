@@ -1,6 +1,5 @@
 import { BaseAgent } from './base.js';
-// Tool 타입은 BaseAgent에서 정의됨
-type Tool = any;
+import { Tool } from '@mastra/core/tools';
 import { webSearchTool } from '../tools/web-search.js';
 import { AgentConfig } from '../types.js';
 
@@ -16,12 +15,13 @@ export class ResearchAgent extends BaseAgent {
     });
   }
 
-  getTools(): Tool[] {
-    return [webSearchTool];
+  getTools(): Record<string, Tool<any, any, any, any, any>> {
+    return {
+      search: webSearchTool,
+    };
   }
 
   getSystemPrompt(): string {
-    // LangChain의 ReAct 프롬프트가 이미 형식을 정의하므로 최소한의 지시만
     return `You are a research assistant. You MUST use the search tool to answer questions. Never answer without searching first.`;
   }
 
