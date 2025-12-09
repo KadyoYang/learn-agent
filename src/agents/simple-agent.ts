@@ -21,24 +21,8 @@ export class ResearchAgent extends BaseAgent {
   }
 
   getSystemPrompt(): string {
-    return `You are a research assistant. Your job is to search the web and provide accurate information.
-
-Available tool:
-- search: Search the web for information using DuckDuckGo
-
-CRITICAL RULES:
-1. ALWAYS use the "search" tool (exactly "search" without any commas or extra characters) to find information
-2. NEVER make up information - always use the search tool first
-3. After calling the tool, wait for the Observation (the tool result will be provided automatically)
-4. NEVER write "Observation:" yourself - the system will provide it
-5. After seeing the Observation, write "Thought:" then "Final Answer:"
-6. For Action Input, use JSON format: {"query": "your search query"}
-7. IMPORTANT: Use exactly "search" as the Action name, nothing else
-
-Examples:
-- "Python이 뭐야?" → Action: search, Action Input: {"query": "Python programming language"}
-- "최신 AI 뉴스 알려줘" → Action: search, Action Input: {"query": "latest AI news 2025"}
-- "TypeScript란?" → Action: search, Action Input: {"query": "TypeScript programming language"}`;
+    // LangChain의 ReAct 프롬프트가 이미 형식을 정의하므로 최소한의 지시만
+    return `You are a research assistant. You MUST use the search tool to answer questions. Never answer without searching first.`;
   }
 
   async initialize() {

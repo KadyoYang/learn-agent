@@ -26,6 +26,7 @@ export abstract class BaseAgent {
     });
 
     // LangChain Hub에서 기본 ReAct 프롬프트 가져오기
+    // 기본 프롬프트가 이미 tools, tool_names 변수를 포함하고 있음
     const prompt = await pull<ChatPromptTemplate>('hwchase17/react');
 
     const agent = await createReactAgent({
@@ -52,11 +53,11 @@ export abstract class BaseAgent {
     try {
       Logger.agent(`요청 수신: ${this.config.name}`, { input });
       
-      // system prompt를 입력에 포함
+      // System prompt를 input 앞에 추가 (기본 프롬프트와 충돌하지 않도록 간단하게)
       const systemPrompt = this.getSystemPrompt();
-      const enhancedInput = `${systemPrompt}\n\nUser question: ${input}`;
-      
-      Logger.log(`System Prompt: ${systemPrompt.substring(0, 100)}...`);
+      const enhancedInput = systemPrompt 
+        ? `${systemPrompt}\n\n${input}`
+        : input;
       
       // AgentExecutor가 agent_scratchpad를 자동으로 관리
       const result = await this.executor.invoke({ input: enhancedInput });
